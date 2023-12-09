@@ -258,9 +258,9 @@ To set up language preferences in Arch Linux, follow these steps:
 
 1. Open the `locale.gen` file using the nano text editor:
 
-    ```bash
-    nano /etc/locale.gen
-    ```
+```bash
+nano /etc/locale.gen
+```
 
 2. Locate the list of languages within the file. Uncomment the languages you want to enable. For example, to enable English (en_US.UTF-8) and Bengali (bn_BD UTF-8, bn_IN UTF-8), remove the `#` symbol in front of the desired languages. Save the file by pressing `Ctrl + O` and exit nano with `Ctrl + X`.
 
@@ -288,15 +288,15 @@ If you modified console keymaps during the initial installation, ensure their pe
 
 1. Open the `/etc/vconsole.conf` file:
 
-    ```bash
-    nano /etc/vconsole.conf
-    ```
+```bash
+nano /etc/vconsole.conf
+```
 
 2. Add the line specifying your preferred keymap:
 
-    ```bash
-    KEYMAP=mac-us
-    ```
+```bash
+KEYMAP=mac-us
+```
 
 This ensures that your chosen keymap remains active whenever you use the virtual console, eliminating the need for manual reconfiguration each time.
 
@@ -356,7 +356,7 @@ pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libthe
 - **Arch Package**
 
 ```sh
-pacman -S git vlc
+pacman -S git vlc gnome-disk-utility
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
