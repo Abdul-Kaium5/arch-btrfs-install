@@ -209,9 +209,15 @@ This guide provides step-by-step instructions for installing Arch Linux and conf
 mkfs.vfat -F 32 -n EFI /dev/your_drive1
 mkfs.btrfs -L ROOT /dev/your_drive2
 
+1. Connect Network :
 
+iwctl
+device list
+device wlan0 show
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect AB_KAIUM
+password
+exit
+ping google.com
 
-
-
-sudo pacman -S vlc
-sudo pacman -S p7zip p7zip-plugins unrar tar rsync aria2
