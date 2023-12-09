@@ -1,7 +1,7 @@
 # arch-install
 
-# mkfs.vfat -F 32 -n EFI /dev/your_drive1
-# mkfs.btrfs -L ROOT /dev/your_drive2
+mkfs.vfat -F 32 -n EFI /dev/your_drive1
+mkfs.btrfs -L ROOT /dev/your_drive2
 
 iwctl
 device list
@@ -187,6 +187,31 @@ Type the below command in the terminal:
 sudo pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins
 
 However, installing a media player like VLC imports all the necessary codecs and installs it.
+
+
+
+
+
+
+
+
+
+
+# Arch Linux Installation Guide
+
+This guide provides step-by-step instructions for installing Arch Linux and configuring various system settings, including setting up different desktop environments, Btrfs subvolumes, user management, and more.
+
+## Installation Steps
+
+### Formatting Drives
+
+```bash
+mkfs.vfat -F 32 -n EFI /dev/your_drive1
+mkfs.btrfs -L ROOT /dev/your_drive2
+
+
+
+
 
 sudo pacman -S vlc
 sudo pacman -S p7zip p7zip-plugins unrar tar rsync aria2
