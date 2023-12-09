@@ -9,6 +9,11 @@
 
  ### ✦ Installation Steps
 
+> [!Installation Steps]
+> You can also create your own list (for ex. `custom_apps.lst`) with all your favorite apps and pass the file as a parameter to install it -
+>```shell
+>./install.sh custom_apps.lst
+>```
 
 ### ⓘ Arch ISO
 - **Download the Arch Linux ISO**
@@ -533,3 +538,5 @@ pacman -Q > installed_packages.txt
 ```
 
 These commands will help you install, remove, upgrade, and search for packages effectively using Pacman.
+
+
