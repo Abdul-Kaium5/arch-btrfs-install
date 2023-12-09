@@ -209,8 +209,9 @@ This guide provides step-by-step instructions for installing Arch Linux and conf
 mkfs.vfat -F 32 -n EFI /dev/your_drive1
 mkfs.btrfs -L ROOT /dev/your_drive2
 
-1. Connect Network :
+###1. Connect Network :
 
+```bash
 iwctl
 device list
 device wlan0 show
