@@ -23,25 +23,25 @@ reflector -c "Bangladesh" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 We will create few of them to support easy snapshoting with snapper
 
-    Mount the root btrfs volume
+Mount the root btrfs volume
 
-    mount /dev/nvme0n1p6 /mnt
+mount /dev/nvme0n1p6 /mnt
 
-    Create subvolume for root, home, var and one for snapshots
+Create subvolume for root, home, var and one for snapshots
 
-    btrfs subvolume create /mnt/@root
-    btrfs subvolume create /mnt/@var
-    btrfs subvolume create /mnt/@home
-    btrfs subvolume create /mnt/@snapshots
+btrfs subvolume create /mnt/@root
+btrfs subvolume create /mnt/@var
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@snapshots
 
-    Mount them.
+Mount them.
 
-    umount /mnt
-    mount -o noatime,compress=lzo,subvol=@root /dev/nvme0n1p6 /mnt
-    mkdir /mnt/{boot,var,home,.snapshots}
-    mount -o noatime,compress=lzo,subvol=@var /dev/nvme0n1p6 /mnt/var
-    mount -o noatime,compress=lzo,subvol=@home /dev/nvme0n1p6 /mnt/home
-    mount -o noatime,compress=lzo,subvol=@snapshots /dev/nvme0n1p6 /mnt/.snapshots
+umount /mnt
+mount -o noatime,compress=lzo,subvol=@root /dev/nvme0n1p6 /mnt
+mkdir /mnt/{boot,var,home,.snapshots}
+mount -o noatime,compress=lzo,subvol=@var /dev/nvme0n1p6 /mnt/var
+mount -o noatime,compress=lzo,subvol=@home /dev/nvme0n1p6 /mnt/home
+mount -o noatime,compress=lzo,subvol=@snapshots /dev/nvme0n1p6 /mnt/.snapshots
 
 mount /dev/nvme0n1p5 /mnt/boot/efi
 pacstrap /mnt base base-devel btrfs-progs efibootmgr;/
