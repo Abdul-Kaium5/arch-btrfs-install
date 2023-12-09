@@ -1,6 +1,6 @@
 # Arch Linux Installation Guide
   **Have you ever heard someone say, <code> Oh – by the way, I use Arch Linux! </code>**
-
+> [!Tip]
  > - Linux: an OS or a kernel? For me, it's freedom. Arch Linux: freedom to craft an OS. Installing it? A Linux proficiency badge.
  > - Arch Linux: for pros. Complete system control. Choose packages, kernels, desktops. Your call. 
  > - This is because installing Arch Linux on a machine requires you to have proper knowledge of how different parts of a Linux distribution work. So running Arch Linux on your system is kind of a testament to your understanding of Linux.
@@ -8,12 +8,6 @@
 #### Step-by-step guide for ARCH Linux setup: system settings, including setting up different desktop environments, Btrfs subvolumes, user management, and more.
 
  ### ✦ Installation Steps
-
-> [!Installation Steps]
-> You can also create your own list (for ex. `custom_apps.lst`) with all your favorite apps and pass the file as a parameter to install it -
->```shell
->./install.sh custom_apps.lst
->```
 
 ### ⓘ Arch ISO
 - **Download the Arch Linux ISO**
@@ -60,9 +54,9 @@ ls /sys/firmware/efi/efivars
 ## ⓘ Setup
 
 ✦ **Disk Partitioning**
-
-- **Start with Awareness:**
-  - Proceed with caution; partitioning mistakes may result in data loss. Review the entire section before proceeding.
+> [!Caution]
+>- **Start with Awareness:**
+>  - Proceed with caution; partitioning mistakes may result in data loss. Review the entire section before proceeding.
 
 - **Identify Connected Disks:**
   - Use `fdisk` to list available devices and their partitions:
@@ -476,66 +470,65 @@ reboot
 
 ✦ **Managing Packages Using Pacman**
 
-
+> [!Tip]
 > Pacman is the package manager for Arch Linux. Here are some commonly used Pacman commands for package management:
-
-### Installing Packages
-
-- **Install a single package.**
-
-```bash
-sudo pacman -S <package name>
-```
-- **Install multiple packages.**
-
-```bash
-sudo pacman -S <package name> <package name>
-```
-- **Install from a specific repository.**
-
-```bash
-sudo pacman -S <package repository>/<package name>
-```
-- **Remove a package.**
-
-```bash
-sudo pacman -R <package name>
-```
-- **Remove a package and its dependencies.**
-
-```bash
-sudo pacman -Rs <package name>
-```
-- **Remove a package, its configuration, and dependencies.**
-
-```bash
-sudo pacman -Rn <package name>
-```
-- **Remove orphan packages.**
-
-```bash
-sudo pacman -Qdtq | pacman -Rs -
-```
-- **Upgrade all packages.**
-
-```bash
-sudo pacman -Syu
-```
-- **Search for a package in the database.**
-
-```bash
-sudo pacman -Ss <package name>
-```
-- **Check if a package is installed.**
-
-```bash
-sudo pacman -Qs <package name>
-```
-- **This command will generate a file named installed_packages.txt containing a list of all installed packages using Pacman.**
-
-```bash
-pacman -Q > installed_packages.txt
-```
+>### Installing Packages
+>
+>- **Install a single package.**
+>
+>```bash
+>sudo pacman -S <package name>
+>```
+>- **Install multiple packages.**
+>
+>```bash
+>sudo pacman -S <package name> <package name>
+>```
+>- **Install from a specific repository.**
+>
+>```bash
+>sudo pacman -S <package repository>/<package name>
+>```
+>- **Remove a package.**
+>
+>```bash
+>sudo pacman -R <package name>
+>```
+>- **Remove a package and its dependencies.**
+>
+>```bash
+>sudo pacman -Rs <package name>
+>```
+>- **Remove a package, its configuration, and dependencies.**
+>
+>```bash
+>sudo pacman -Rn <package name>
+>```
+>- **Remove orphan packages.**
+>
+>```bash
+>sudo pacman -Qdtq | pacman -Rs -
+>```
+>- **Upgrade all packages.**
+>
+>```bash
+>sudo pacman -Syu
+>```
+>- **Search for a package in the database.**
+>
+>```bash
+>sudo pacman -Ss <package name>
+>```
+>- **Check if a package is installed.**
+>
+>```bash
+>sudo pacman -Qs <package name>
+>```
+>- **This command will generate a file named installed_packages.txt containing a list of all installed packages using Pacman.**
+>
+>```bash
+>pacman -Q > installed_packages.txt
+>```
 
 These commands will help you install, remove, upgrade, and search for packages effectively using Pacman.
 
