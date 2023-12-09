@@ -428,7 +428,7 @@ To install microcode updates for AMD processors, use the following command:
 pacman -S amd-ucode
 
 # for intel processors
-pacman -S intel-ucode```
+pacman -S intel-ucode
 ```
 
 
