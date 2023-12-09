@@ -8,88 +8,89 @@
 #### Step-by-step guide for ARCH Linux setup: system settings, including setting up different desktop environments, Btrfs subvolumes, user management, and more.
 
  ### ✦ Installation Steps
-
-### ⓘ Arch ISO
-- **Download the Arch Linux ISO**
-
-  - Grab the ISO from the official website.
-
-     [Click here to download Arch Linux ISO](https://archlinux.org/download/)
-
-- **How To Install Arch Linux**
-  - ### Booting from USB Drive
-
-1. **Ensure a bootable USB drive.**
-   
-2. **Boot from USB:**
-    - The method varies by computer.
-    - Example: On my machine, pressing `F2 key` during boot brings up the bootable devices list.
-    - Find the appropriate method for your computer.
-   
-3. **Using Ventoy (Optional):**
-    - Ventoy offers simple multi-OS support.
-
-4. **Select USB Drive:**
-   - Once on the bootable devices list, choose your USB drive to boot.
-   
-5. **Select First Option:**
-    - Choose the first entry from the list.
-    
-![image](https://github.com/ab-kaium/arch-install/assets/101384847/68f9614a-294e-4a8c-af96-d3d6864da9f5)
-
-
-![image](https://github.com/ab-kaium/arch-install/assets/101384847/2e4cd7ef-edda-45f4-bfcf-a2840a567a78)
-
-###### Arch Linux Installation: Manual Configuration - No GUI; Manual setup required for each aspect; Time and effort needed, but enjoyable with understanding.
-
-- **How To Verify the Boot Mode**
-```sh
-ls /sys/firmware/efi/efivars
-```
-![image](https://github.com/ab-kaium/arch-install/assets/101384847/21575574-5afd-4ae6-9f60-5048ae18b76f)
-###### UEFI Mode Check: Displayed files indicate UEFI mode; Confirm proper mode before proceeding.
-
-
-
-## ⓘ Setup
-
-✦ **Disk Partitioning**
+> [!Important]
+>### ⓘ Arch ISO
+>- **Download the Arch Linux ISO**
+>
+>  - Grab the ISO from the official website.
+>
+>     [Click here to download Arch Linux ISO](https://archlinux.org/download/)
+>
+>- **How To Install Arch Linux**
+> [!Important]
+>  - ### Booting from USB Drive
+>
+>1. **Ensure a bootable USB drive.**
+>   
+>2. **Boot from USB:**
+>    - The method varies by computer.
+>    - Example: On my machine, pressing `F2 key` during boot brings up the bootable devices list.
+>    - Find the appropriate method for your computer.
+>
+>3. **Using Ventoy (Optional):**
+>    - Ventoy offers simple multi-OS support.
+>
+>4. **Select USB Drive:**
+>   - Once on the bootable devices list, choose your USB drive to boot.
+>   
+>5. **Select First Option:**
+>    - Choose the first entry from the list.
+>    
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/68f9614a-294e-4a8c-af96-d3d6864da9f5)
+>
+>
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/2e4cd7ef-edda-45f4-bfcf-a2840a567a78)
+>
+>###### Arch Linux Installation: Manual Configuration - No GUI; Manual setup required for each aspect; Time and effort needed, but enjoyable with understanding.
+>
+>- **How To Verify the Boot Mode**
+>```sh
+>ls /sys/firmware/efi/efivars
+>```
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/21575574-5afd-4ae6-9f60-5048ae18b76f)
+>###### UEFI Mode Check: Displayed files indicate UEFI mode; Confirm proper mode before proceeding.
+>
+>
+>
+>## ⓘ Setup
+>
+>✦ **Disk Partitioning**
 > [!Caution]
 >- **Start with Awareness:**
 >  - Proceed with caution; partitioning mistakes may result in data loss. Review the entire section before proceeding.
+>
+>- **Identify Connected Disks:**
+>  - Use `fdisk` to list available devices and their partitions:
+>    ```sh
+>    fdisk -l
+>    fdisk /dev/sda -l
+ >   ```
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/71bd1c29-6a98-4e0d-b9f1-b25e8f430160)
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/eceb3e78-3c4d-4531-825f-ff9f7d560bc6)
 
-- **Identify Connected Disks:**
-  - Use `fdisk` to list available devices and their partitions:
-    ```sh
-    fdisk -l
-    fdisk /dev/sda -l
-    ```
-![image](https://github.com/ab-kaium/arch-install/assets/101384847/71bd1c29-6a98-4e0d-b9f1-b25e8f430160)
- ![image](https://github.com/ab-kaium/arch-install/assets/101384847/eceb3e78-3c4d-4531-825f-ff9f7d560bc6)
-
-    Replace `/dev/sda` with your device. This command shows existing partitions.
-
-- **Partition Table Check:**
-  - Check existing partitions within the selected device:
-    ```sh
-    fdisk /dev/sda -l
-    ```
-    Replace `/dev/sda` with your device.
-
-- **cfdisk Option:**
-  - `cfdisk` offers a user-friendly interface for partition manipulation:
-    ```sh
-    cfdisk /dev/sda
-    ```
-    Replace `/dev/sda` with your device.
-
-- **UEFI Partition Setup:**
-  - Use `gpt` for UEFI-based systems. Choose partition types accordingly.
-    ```sh
-    cfdisk /dev/sda
-    ```
-![image](https://github.com/ab-kaium/arch-install/assets/101384847/2483b4b5-f906-4324-93b6-b11cb09b9693)
-![image](https://github.com/ab-kaium/arch-install/assets/101384847/5e2578ab-5901-4b5a-825d-0304ac67ca6b)
+>    Replace `/dev/sda` with your device. This command shows existing partitions.
+>
+>- **Partition Table Check:**
+>  - Check existing partitions within the selected device:
+>    ```sh
+>    fdisk /dev/sda -l
+>    ```
+>    Replace `/dev/sda` with your device.
+>
+>- **cfdisk Option:**
+>  - `cfdisk` offers a user-friendly interface for partition manipulation:
+>    ```sh
+>    cfdisk /dev/sda
+>    ```
+>    Replace `/dev/sda` with your device.
+>
+>- **UEFI Partition Setup:**
+>  - Use `gpt` for UEFI-based systems. Choose partition types accordingly.
+>    ```sh
+>    cfdisk /dev/sda
+>    ```
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/2483b4b5-f906-4324-93b6-b11cb09b9693)
+>![image](https://github.com/ab-kaium/arch-install/assets/101384847/5e2578ab-5901-4b5a-825d-0304ac67ca6b)
 
 - **Partition Creation:**
   - Create the required partitions:
