@@ -231,7 +231,7 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 reflector --download-timeout 60 --country Bangladesh,Singapore --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
-= **Configuring the Time Zone**
+- **Configuring the Time Zone**
 
 Once you've switched to root, configuring the time zone is the first step. To view all available time zones, execute the following command:
 
@@ -431,6 +431,7 @@ pacman -S amd-ucode
 pacman -S intel-ucode```
 ```
 
+
 - **Snapshot time**
 
 You can create snapshots like so
@@ -468,78 +469,66 @@ reboot
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/7a3b9a72-27f7-4d70-9685-957a2116261f)
 
 
-- **Managing Packages Using Pacman**
+✦ **Managing Packages Using Pacman**
 
 
-Pacman is the package manager for Arch Linux. Here are some commonly used Pacman commands for package management:
+> Pacman is the package manager for Arch Linux. Here are some commonly used Pacman commands for package management:
 
 ### Installing Packages
 
-Install a single package:
+- **Install a single package.**
+
 ```bash
 sudo pacman -S <package name>
 ```
-Install multiple packages:
-
-bash
-
-sudo pacman -S <package name> <package name>
-```
-Install from a specific repository:
-
-bash
-
-sudo pacman -S <package repository>/<package name>
-```
-
-Remove a package:
-
-bash
-
-sudo pacman -R <package name>
-```
-Remove a package and its dependencies:
-
-bash
-
-sudo pacman -Rs <package name>
-```
-Remove a package, its configuration, and dependencies:
-
-bash
-
-sudo pacman -Rn <package name>
-```
-Remove orphan packages:
-
-bash
-
-sudo pacman -Qdtq | pacman -Rs -
-```
-Upgrading Packages
-
-Upgrade all packages:
-
-bash
-
-sudo pacman -Syu
-```
-Searching for Packages
-
-Search for a package in the database:
-
-bash
-
-sudo pacman -Ss <package name>
-```
-Check if a package is installed:
+- **Install multiple packages.**
 
 ```bash
+sudo pacman -S <package name> <package name>
+```
+- **Install from a specific repository.**
 
+```bash
+sudo pacman -S <package repository>/<package name>
+```
+- **Remove a package.**
+
+```bash
+sudo pacman -R <package name>
+```
+- **Remove a package and its dependencies.**
+
+```bash
+sudo pacman -Rs <package name>
+```
+- **Remove a package, its configuration, and dependencies.**
+
+```bash
+sudo pacman -Rn <package name>
+```
+- **Remove orphan packages.**
+
+```bash
+sudo pacman -Qdtq | pacman -Rs -
+```
+- **Upgrade all packages.**
+
+```bash
+sudo pacman -Syu
+```
+- **Search for a package in the database.**
+
+```bash
+sudo pacman -Ss <package name>
+```
+- **Check if a package is installed.**
+
+```bash
 sudo pacman -Qs <package name>
 ```
-This command will generate a file named installed_packages.txt containing a list of all installed packages using Pacman.
+- **This command will generate a file named installed_packages.txt containing a list of all installed packages using Pacman.**
 
+```bash
 pacman -Q > installed_packages.txt
 ```
 
