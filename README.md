@@ -241,7 +241,7 @@ ls /usr/share/zoneinfo
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/604d0d04-af2e-42d8-9ea1-a1e289c2a548)
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/2943bac1-7f44-485e-b8a6-3d23563e013d)
 
-#####I live in Dhaka, Bangladesh which resides inside the Asia zone. If I list out the content of Asia, I should see Dhaka there:To set Asia/Dhaka as my default time zone, I'll have to make a symbolic link of the file at the /etc/localtime location:
+##### I live in Dhaka, Bangladesh which resides inside the Asia zone. If I list out the content of Asia, I should see Dhaka there:To set Asia/Dhaka as my default time zone, I'll have to make a symbolic link of the file at the /etc/localtime location:
 
 ```sh
 ln -sf /usr/share/zoneinfo/Asia/Dhaka /etc/localtime
