@@ -207,7 +207,9 @@ This guide provides step-by-step instructions for installing Arch Linux and conf
 
 ```bash
 mkfs.vfat -F 32 -n EFI /dev/your_drive1
-mkfs.btrfs -L ROOT /dev/your_drive2 ```bash
+mkfs.btrfs -L ROOT /dev/your_drive2
+
+exit
 
 ###1. Connect Network :
 
