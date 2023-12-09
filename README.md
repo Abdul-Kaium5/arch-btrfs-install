@@ -90,7 +90,9 @@
 >     - EFI System Partition: Allocate a minimum of 500MB.
 >     - ROOT Partition: Allocate desired space, e.g., 10GB or more.
 >     - Swap Partition: Allocate remaining space and set as Linux swap.
+
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/0a866c52-6ea1-4885-abf5-952b0e266cfd)
+ 
  - **Partition Types and Sizes:**
 > [!Important]
 >   - Assign types and sizes for each partition carefully.
@@ -125,7 +127,7 @@
 > mkfs.btrfs -L ROOT /dev/nvme0n1p6
 > ```
 
-✦ **Connecting to Network**
+- **Connecting to Network**
 > [!Important]
 > ```sh
 > iwctl
@@ -239,16 +241,14 @@
 > 
 > ```sh
 > ln -sf /usr/share/zoneinfo/Asia/Dhaka /etc/localtime
-> ```
-> 
-> > The ln command is used for creating symbolic links. The -sf options indicate soft and force, respectively.
-> 
+> ``` 
+> The ln command is used for creating symbolic links. The -sf options indicate soft and force, respectively.
+
 - **Configuring Localization**
 > [!Important]
 > To set up language preferences in Arch Linux, follow these steps:
-> 
-- **Edit Locale Settings**
-> [!Important]
+>
+>- **Edit Locale Settings**
 > 1. Open the `locale.gen` file using the nano text editor:
 > ```bash
 > nano /etc/locale.gen
@@ -266,15 +266,14 @@
 - **Configuring Default Language and Console Keymaps**
 > [!Important]
 > ## Set Default Language
-> 
 > Open the `/etc/locale.conf` file and append the following line to set English (en_US.UTF-8) as the default language:
 > 
 > ```bash
 > LANG=en_US.UTF-8
 > ```
-> 
-> ## Persisting Console Keymaps
-> 
+
+- **Persisting Console Keymaps**
+> [!Important]
 > If you modified console keymaps during the initial installation, ensure their persistence by adding configurations to `/etc/vconsole.conf`. For example, if you changed the default keymap to `mac-us`, follow these steps:
 > 
 > 1. Open the `/etc/vconsole.conf` file:
@@ -298,8 +297,9 @@
 > ```sh
 > pacman -Syu
 > ```
-> - **Installing Graphics Drivers**
-> 
+
+ - **Installing Graphics Drivers**
+> [!Important]
 >  - Installing graphics drivers on Arch Linux is a simple process. You need to install specific packages based on your graphics processing unit.
 > 
 > ```sh
@@ -312,20 +312,23 @@
 > # for intel integrated graphics processing unit
 > pacman -S xf86-video-intel
 > ```
-> 
-> - **Installing X server, Desktop Environment and Display Manager**
+
+- **Installing X server, Desktop Environment and Display Manager**
+> [!Important]
 > Before installing a desktop environment (DE), you will need to install the X server which is the most popular display server.
 > 
 > ```sh
 > pacman -S xorg xorg-server
 > ```
 > Once it’s completed, use any of the below commands to install your favorite desktop environment.
-> 
-> #### To install GNOME:
+ 
+ - **To install GNOME**
+> [!Important]
 > ```sh
 > pacman -S gnome gnome-extra
 > ```
-> #### To install KDE:
+ - **To install KDE**
+> [!Important]
 > ```sh
 > pacman -S plasma plasma-wayland-session kde-applications
 > ```
@@ -335,18 +338,16 @@
 > systemctl enable gdm.service [For Gnome]
 > systemctl enable NetworkManager.service
 > ```
-> 
-> - **Installing Codecs and plugins**
-> 
+
+- **Installing Codecs and plugins**
+> [!Important]
 > Of course, you are going to use your personal system for recreational works like watching videos and listening to your favorite song. But before that, you will have to install codecs for these audio and video files.However, installing a media player like VLC imports all the necessary codecs and installs it.
-> 
 > ```sh
 > pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins
 > ```
 
 - **Arch Package**
 > [!Important]
-> 
 > ```sh
 > pacman -S git vlc gnome-disk-utility
 > grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
@@ -356,18 +357,17 @@
  - **Configuring Network on Linux**
 > [!Important]
 > If you haven't installed the `networkmanager` package yet, use the following command:
-> 
 > ```bash
 > pacman -S networkmanager
 > ```
-> - **Setting Hostname**
+
+- **Setting Hostname**
+> [!Important]
 >  -Add your chosen hostname and put in your-hostname section(e.g., 'archlinux'):
-> 
 > ```bash
 > echo your-hostname > /etc/hostname
 > ```
 > then,
-> 
 > ```bash
 > touch /etc/hosts
 > nano /etc/hosts
@@ -378,12 +378,12 @@
 > ::1         localhost.localdomain   localhost
 > 127.0.1.1   localhost.localdomain   your_hostname
 > ```
-> 
 > Enable the NetworkManager service to manage network connections:
 > systemctl enable NetworkManager.service
 
 - **User**
 > [!Important]
+> ```bash
 > groupadd sudo
 > useradd -m ab-kaium
 > passwd ab-kaium
@@ -392,24 +392,28 @@
 > nano /etc/sudoers
 > %wheel ALL=(ALL:ALL) ALL [uncomment this line]
 > your-username ALL=(ALL) ALL
+> ```
 
 - **Setup Package Manager**
 > [!Important]
 > After reboot we need to install additional AUR package manager. I prefer yay.
+> ```bash
 > git clone https://aur.archlinux.org/yay.git
 > cd yay
 > makepkg -si
 > yay -S pamac-aur
+> ```
 
 - **Installing Microcode Updates**
 > [!Important]
 > Microcode updates provided by processor manufacturers like Intel and AMD are essential for system stability and security. Arch Linux offers official packages for microcode updates that should be installed on your system.
->
+> ```bash
 > # for amd processors
 > pacman -S amd-ucode
 >
 > # for intel processors
 > pacman -S intel-ucode
+> ```
 
 - **Snapshot time**
 > [!Caution]
@@ -435,15 +439,16 @@
 > reboot
 > ```
 > **Wait until you see the GRUB menu.**
-> ![image](https://github.com/ab-kaium/arch-install/assets/101384847/bb050946-6d62-46c9-9177-d36decd7f051)
-> > Choose Arch Linux from the list and wait until the system finishes booting up.
-> ![image](https://github.com/ab-kaium/arch-install/assets/101384847/893987ca-256f-46cc-a1ca-cdcba4acdf31)
-> > Log in with your user credentials and voilà!
-> ![image](https://github.com/ab-kaium/arch-install/assets/101384847/a095ae11-1ae1-4cf8-8e47-a97861e9a72f)
-> > As you can see, I'm currently using Plasma. Now switch to TTY2 press Ctrl + Alt + F2 key combination. You'll see a console login prompt:
-> ![image](https://github.com/ab-kaium/arch-install/assets/101384847/7a3b9a72-27f7-4d70-9685-957a2116261f)
 
-✦ **Managing Packages Using Pacman**
+![image](https://github.com/ab-kaium/arch-install/assets/101384847/bb050946-6d62-46c9-9177-d36decd7f051)
+**Choose Arch Linux from the list and wait until the system finishes booting up.**
+![image](https://github.com/ab-kaium/arch-install/assets/101384847/893987ca-256f-46cc-a1ca-cdcba4acdf31)
+**Log in with your user credentials and voilà!**
+![image](https://github.com/ab-kaium/arch-install/assets/101384847/a095ae11-1ae1-4cf8-8e47-a97861e9a72f)
+**As you can see, I'm currently using Plasma. Now switch to TTY2 press Ctrl + Alt + F2 key combination. You'll see a console login prompt.**
+![image](https://github.com/ab-kaium/arch-install/assets/101384847/7a3b9a72-27f7-4d70-9685-957a2116261f)
+
+- **Managing Packages Using Pacman**
 > [!Tip]
 > Pacman is the package manager for Arch Linux. Here are some commonly used Pacman commands for package management:
 >### Installing Packages
@@ -503,7 +508,8 @@
 >```bash
 >pacman -Q > installed_packages.txt
 >```
+> **These commands will help you install, remove, upgrade, and search for packages effectively using Pacman.**
 
-**These commands will help you install, remove, upgrade, and search for packages effectively using Pacman.**
-
+**Congratulations! You've successfully installed Arch Linux on your system. 🎉**
+**Remember, Arch Linux offers unparalleled flexibility and control but requires a good understanding of Linux. Enjoy exploring and customizing your new Arch setup!**
 
