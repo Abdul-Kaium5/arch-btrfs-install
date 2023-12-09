@@ -64,8 +64,8 @@
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/71bd1c29-6a98-4e0d-b9f1-b25e8f430160)
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/eceb3e78-3c4d-4531-825f-ff9f7d560bc6)
 
+- **Partition Table Check:**
 > [!Important]
->- **Partition Table Check:**
 >  - Check existing partitions within the selected device:
 >    ```sh
 >    fdisk /dev/sda -l
@@ -84,15 +84,15 @@
 >    ```
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/2483b4b5-f906-4324-93b6-b11cb09b9693)
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/5e2578ab-5901-4b5a-825d-0304ac67ca6b)
+ - **Partition Creation:**
 > [!Important]
-> - **Partition Creation:**
 >   - Create the required partitions:
 >     - EFI System Partition: Allocate a minimum of 500MB.
 >     - ROOT Partition: Allocate desired space, e.g., 10GB or more.
 >     - Swap Partition: Allocate remaining space and set as Linux swap.
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/0a866c52-6ea1-4885-abf5-952b0e266cfd)
+ - **Partition Types and Sizes:**
 > [!Important]
-> - **Partition Types and Sizes:**
 >   - Assign types and sizes for each partition carefully.
 >     - EFI: Type as EFI System.
 >     - ROOT: Default Linux filesystem type.
@@ -104,30 +104,29 @@
  ![image](https://github.com/ab-kaium/arch-install/assets/101384847/051f2158-c0b1-475f-9534-30fec9d4999b)
  ![image](https://github.com/ab-kaium/arch-install/assets/101384847/39f2e454-94ef-457a-89d0-765bef4359d2)
 
+ - **Finalizing Partitions:**
 > [!Important]
-> - **Finalizing Partitions:**
 >   - Confirm choices and write changes to the partition table:
 >     - Use the [ Write ] action and confirm changes.
 >     - Exit the program by selecting [ Quit ].
-    
- ![image](https://github.com/ab-kaium/arch-install/assets/101384847/99d9b3c6-57c1-46bd-9337-d5d9a25762b2)
+
+![image](https://github.com/ab-kaium/arch-install/assets/101384847/99d9b3c6-57c1-46bd-9337-d5d9a25762b2)
+
 > [!Important]
 > - **Note for Arch-Windows Dual Boot:**
 >   - If dual-booting with Windows, retain the existing EFI system partition.
 > - **Additional Information on Swap:**
 >   - For alternatives, consider ZRAM setup or swapfile creation if needed.
 
+- **Formatting Drives**
 > [!Caution]
-> - **Formatting Drives**
-> 
 > ```sh
 > mkfs.vfat -F 32 -n EFI /dev/nvme0n1p5
 > mkfs.btrfs -L ROOT /dev/nvme0n1p6
 > ```
 
+✦ **Connecting to Network**
 > [!Important]
-> ✦ **Connecting to Network**
-> 
 > ```sh
 > iwctl
 > device list
@@ -141,9 +140,8 @@
  ![image](https://github.com/ab-kaium/arch-install/assets/101384847/2f241a01-8882-43b6-b640-3b12dad53d89)
  ![image](https://github.com/ab-kaium/arch-install/assets/101384847/55e53732-f913-4de8-b448-2bfd14e270ca)
 
+✦ **Btrfs Subvolumes**
 > [!Important]
-> ✦  **Btrfs Subvolumes**
-> 
 > We will create few of them to support easy snapshoting with snapper.
 > 
 > - **Mount the root btrfs volume**
@@ -174,8 +172,9 @@
 > mount -o noatime,compress=lzo,subvol=@snapshots /dev/nvme0n1p6 /mnt/.snapshots
 > mount /dev/nvme0n1p5 /mnt/boot/efi
 > ```
-> 
-> ✦ **Arch Chroot**
+
+✦ **Arch Chroot**
+> [!Important]
 > - Installing Packages with pacstrap
 > 
 > Use the `pacstrap` script to install essential packages in the specified root directory `/mnt`:
@@ -214,8 +213,9 @@
 > ```sh
 > arch-chroot /mnt
 > ```
-> 
-> - **Set Mirror**
+
+ - **Set Mirror**
+> [!Important]
 > 
 > ```sh
 > pacman -Syy
@@ -223,8 +223,9 @@
 > cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 > reflector --download-timeout 60 --country Bangladesh,Singapore --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 > ```
-> - **Configuring the Time Zone**
 > 
+- **Configuring the Time Zone**
+> [!Important]
 > Once you've switched to root, configuring the time zone is the first step. To view all available time zones, execute the following command:
 > 
 > ```sh
@@ -242,31 +243,29 @@
 > 
 > > The ln command is used for creating symbolic links. The -sf options indicate soft and force, respectively.
 > 
-> - **Configuring Localization**
-> 
+- **Configuring Localization**
+> [!Important]
 > To set up language preferences in Arch Linux, follow these steps:
 > 
-> ### Edit Locale Settings
-> 
+- **Edit Locale Settings**
+> [!Important]
 > 1. Open the `locale.gen` file using the nano text editor:
-> 
 > ```bash
 > nano /etc/locale.gen
 > ```
-> 
 > 2. Locate the list of languages within the file. Uncomment the languages you want to enable. For example, to enable English (en_US.UTF-8) and Bengali (bn_BD UTF-8, bn_IN UTF-8), remove the `#` symbol in front of the desired languages. Save the file by pressing `Ctrl + O` and exit nano with `Ctrl + X`.
-> 
-> ### Generate Locales
-> 
+
+- **Generate Locales**
+> [!Important]
 > Run the following command to generate the locales based on the edited file:
 > 
 > ```bash
 > locale-gen
 > ```
-> 
-> ## Configuring Default Language and Console Keymaps
-> 
-> ### Set Default Language
+
+- **Configuring Default Language and Console Keymaps**
+> [!Important]
+> ## Set Default Language
 > 
 > Open the `/etc/locale.conf` file and append the following line to set English (en_US.UTF-8) as the default language:
 > 
@@ -291,7 +290,9 @@
 > ```
 > 
 > This ensures that your chosen keymap remains active whenever you use the virtual console, eliminating the need for manual reconfiguration each time.
->## ⓘ  Arch tweaks
+
+### ⓘ  Arch tweaks
+> [!Important]
 > - **Update your system**
 > You might already have used the latest release, but it’s advisable to check for the latest update for your Arch System:
 > ```sh
@@ -342,17 +343,18 @@
 > ```sh
 > pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins
 > ```
-> 
-> - **Arch Package**
+
+- **Arch Package**
+> [!Important]
 > 
 > ```sh
 > pacman -S git vlc gnome-disk-utility
 > grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 > grub-mkconfig -o /boot/grub/grub.cfg
 > ```
-> 
-> - **Configuring Network on Linux**
-> 
+
+ - **Configuring Network on Linux**
+> [!Important]
 > If you haven't installed the `networkmanager` package yet, use the following command:
 > 
 > ```bash
@@ -379,9 +381,9 @@
 > 
 > Enable the NetworkManager service to manage network connections:
 > systemctl enable NetworkManager.service
->
-> # User
->
+
+- **User**
+> [!Important]
 > groupadd sudo
 > useradd -m ab-kaium
 > passwd ab-kaium
@@ -390,18 +392,17 @@
 > nano /etc/sudoers
 > %wheel ALL=(ALL:ALL) ALL [uncomment this line]
 > your-username ALL=(ALL) ALL
->
-> # Setup Package Manager
->
+
+- **Setup Package Manager**
+> [!Important]
 > After reboot we need to install additional AUR package manager. I prefer yay.
->
 > git clone https://aur.archlinux.org/yay.git
 > cd yay
 > makepkg -si
 > yay -S pamac-aur
->
-> # Installing Microcode Updates
->
+
+- **Installing Microcode Updates**
+> [!Important]
 > Microcode updates provided by processor manufacturers like Intel and AMD are essential for system stability and security. Arch Linux offers official packages for microcode updates that should be installed on your system.
 >
 > # for amd processors
@@ -410,8 +411,7 @@
 > # for intel processors
 > pacman -S intel-ucode
 
-
-> # Snapshot time
+- **Snapshot time**
 > [!Caution]
 > You can create snapshots like so
 >
@@ -427,8 +427,7 @@
 >
 > you will probably want to use Snapper or something like that to manage your snapshots.
 
-
-> - **Reboot**
+ - **Reboot**
 > [!Caution]
 > ```sh
 > exit
