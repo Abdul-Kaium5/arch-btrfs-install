@@ -518,4 +518,60 @@ systemctl enable --now auto-cpufreq
 Bluetooth
 https://www.jeremymorgan.com/tutorials/linux/how-to-bluetooth-arch-linux/
 
+To add a right-click context menu option in Dolphin using the admin:/// protocol, you can create a service menu. Here's a step-by-step guide:
+1. Create a Service Menu:
 
+    Navigate to the ServiceMenu directory:
+
+    Open your terminal and create the necessary directories if they don't exist:
+
+    bash
+
+mkdir -p ~/.local/share/kservices5/ServiceMenus/
+
+Create a .desktop file for your service menu:
+
+Use your preferred text editor to create a .desktop file. For instance:
+
+bash
+
+nano ~/.local/share/kservices5/ServiceMenus/admin_dolphin.desktop
+
+Write the content for the service menu file:
+
+Add the following content to the .desktop file:
+
+plaintext
+
+    [Desktop Entry]
+    Type=Service
+    X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+    MimeType=inode/directory;
+    Actions=openAsAdmin;
+
+    [Desktop Action openAsAdmin]
+    Name=Open Dolphin as Administrator
+    Icon=system-run
+    Exec=dolphin admin://"%f"
+
+    Save and close the file:
+
+    Save the changes and close the text editor.
+
+    Restart Dolphin:
+
+    Close any open instances of Dolphin and restart it to apply the changes. You can either log out and log back in or restart your system, or simply kill the Dolphin process and reopen it.
+
+How to Use:
+
+    Navigate to a directory in Dolphin:
+
+    Right-click on any folder or empty space within Dolphin.
+
+    Access the new context menu option:
+
+    You should see an option named "Open Dolphin as Administrator" (or similar, depending on the name you gave in the .desktop file). Clicking on this will open Dolphin with administrative privileges for the selected directory.
+
+This context menu option allows you to easily open Dolphin as an administrator for the selected folder or location, using the admin:/// protocol.
+
+Always be cautious when using administrative privileges and ensure you understand the implications of the actions you perform with elevated permissions to avoid unintended changes or damage to your system.
