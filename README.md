@@ -415,21 +415,25 @@
 > pacman -S intel-ucode
 > ```
 
+
 - **Snapshot time**
 > [!Caution]
-> You can create snapshots like so
+>You can create snapshots like so
+>```
+>btrfs subvolume snapshot -r / /.snapshots/@root-`date +%F-%R`
+>```
 >
-> btrfs subvolume snapshot -r / /.snapshots/@root-`date +%F-%R`
+>And to restore from snapshot you just delete the currently used @root and replace it with a earlier snapshot
+>```
+>mount /dev/sda2 /mnt
+>btrfs subvolume delete /mnt/@root
+>brtfs subvolume snapshot /mnt/@snapshots/@root-2015-08-10-20:19 /mnt/@root
+>```
 >
-> And to restore from snapshot you just delete the currently used @root and replace it with an earlier snapshot
+>and then just reboot :)
 >
-> mount /dev/nvme0n1p6 /mnt
-> btrfs subvolume delete /mnt/@root`
-> brtfs subvolume snapshot /mnt/@snapshots/@root-2015-08-10-20:19 /mnt/@root
->
-> and then just reboot :)
->
-> you will probably want to use Snapper or something like that to manage your snapshots.
+> you will probably want to use [Snapper](https://wiki.archlinux.org/index.php/Snapper) or something like that to manage your snapshots.
+
 
  - **Reboot**
 > [!Caution]
