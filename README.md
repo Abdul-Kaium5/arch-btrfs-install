@@ -570,3 +570,27 @@ bash
 pkexec thunar
 
 This command will prompt you to enter your password. Upon successful authentication, Thunar will open with root privileges, allowing you to perform file management tasks that require administrative access.
+
+
+https://wiki.archlinux.org/title/Mkinitcpio#Possibly_missing_firmware_for_module_XXXX
+
+Install Firmware Packages:
+You can use yay or any AUR helper to download and install the required firmware packages. For instance, assuming you're using yay:
+
+bash
+
+yay -S aic94xx-firmware ast-firmware linux-firmware-qlogic linux-firmware-bnx2x linux-firmware-liquidio linux-firmware-mellanox linux-firmware-nfp wd719x-firmware upd72020x-fw
+
+Replace the firmware package names with the correct ones you've identified for the missing modules.
+
+Rebuild Initramfs:
+After installing the firmware packages, rebuild the initramfs for your Linux kernel:
+
+bash
+
+sudo mkinitcpio -p linux
+
+This command will regenerate the initramfs with the newly installed firmware.
+
+Reboot:
+Once the initramfs is rebuilt without warnings, reboot your system to verify that the Plymouth theme or any changes you made to the boot process are working as intended.
