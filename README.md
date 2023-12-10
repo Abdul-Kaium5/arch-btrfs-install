@@ -513,3 +513,7 @@
 **Congratulations! You've successfully installed Arch Linux on your system. 🎉**
 **Remember, Arch Linux offers unparalleled flexibility and control but requires a good understanding of Linux. Enjoy exploring and customizing your new Arch setup!**
 
+yay -S auto-cpufreq
+systemctl enable --now auto-cpufreq 
+
+
