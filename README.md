@@ -515,5 +515,7 @@
 
 yay -S auto-cpufreq
 systemctl enable --now auto-cpufreq 
+Bluetooth
+https://www.jeremymorgan.com/tutorials/linux/how-to-bluetooth-arch-linux/
 
 
