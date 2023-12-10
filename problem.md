@@ -1,9 +1,39 @@
 yay -S auto-cpufreq
 systemctl enable --now auto-cpufreq 
-Bluetooth
-https://www.jeremymorgan.com/tutorials/linux/how-to-bluetooth-arch-linux/
 
-To add a right-click context menu option in Dolphin using the admin:/// protocol, you can create a service menu. Here's a step-by-step guide:
+Bluetooth
+
+Step 1: Install Bluez and Blueman
+
+The first step is to install some utilities.
+I will install:
+```
+sudo pacman -S bluez
+sudo pacman -S bluez-utils
+sudo pacman -S blueman
+```
+Next, make sure the btusb Kernel module is loaded:
+```
+lsmod | grep btusb
+```
+![image](https://github.com/ab-kaium/arch-btrfs-install/assets/101384847/50e6c42e-6f16-4f75-ac48-c47c451187e9)
+Here’s a trick to help it find adapters, even if you plug one in:
+
+Search for autoenable:
+![image](https://github.com/ab-kaium/arch-btrfs-install/assets/101384847/01c5dd22-6a97-4c45-a2f4-4a08aca612cc)
+2. Enable the Service
+
+Next, we want to try starting up the service:
+```
+sudo systemctl start bluetooth.service
+```
+If you want it to start up automatically, enable it:
+```
+sudo systemctl enable bluetooth.service
+```
+Now we should be up and running. You can turn on all adapters with Blueman:
+
+ a right-click context menu option in Dolphin using the admin:/// protocol, you can create a service menu. Here's a step-by-step guide:
 1. Create a Service Menu:
 
     Navigate to the ServiceMenu directory:
