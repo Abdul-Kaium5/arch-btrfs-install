@@ -560,18 +560,13 @@ plaintext
 
     Restart Dolphin:
 
-    Close any open instances of Dolphin and restart it to apply the changes. You can either log out and log back in or restart your system, or simply kill the Dolphin process and reopen it.
+    Close any open instances of Dolphin and restart it to apply the changes. You can either log out and log back in or restart your system, or simply kill the Dolphin process and reopen it
 
-How to Use:
 
-    Navigate to a directory in Dolphin:
+Run Thunar as Root: In the terminal, enter the following command and press Enter:
 
-    Right-click on any folder or empty space within Dolphin.
+bash
 
-    Access the new context menu option:
+pkexec thunar
 
-    You should see an option named "Open Dolphin as Administrator" (or similar, depending on the name you gave in the .desktop file). Clicking on this will open Dolphin with administrative privileges for the selected directory.
-
-This context menu option allows you to easily open Dolphin as an administrator for the selected folder or location, using the admin:/// protocol.
-
-Always be cautious when using administrative privileges and ensure you understand the implications of the actions you perform with elevated permissions to avoid unintended changes or damage to your system.
+This command will prompt you to enter your password. Upon successful authentication, Thunar will open with root privileges, allowing you to perform file management tasks that require administrative access.
