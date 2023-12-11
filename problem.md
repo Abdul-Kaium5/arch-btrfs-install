@@ -109,3 +109,49 @@ This command will regenerate the initramfs with the newly installed firmware.
 
 Reboot:
 Once the initramfs is rebuilt without warnings, reboot your system to verify that the Plymouth theme or any changes you made to the boot process are working as intended.
+
+
+
+
+
+
+    sudo fdisk -l
+
+You should get a long return that includes something like this:
+
+Device             Start        End   Sectors   Size Type
+/dev/nvme0n1p1      2048    1050623   1048576   512M EFI System
+/dev/nvme0n1p2   1050624  874729471 873678848 416.6G Linux filesystem
+/dev/nvme0n1p3 874729472  874762239     32768    16M Microsoft reserved
+/dev/nvme0n1p4 874762240 1000214527 125452288  59.8G Microsoft basic data
+
+    Get the UUID of the EFI partition sudo blkid /dev/nvme0n1p1 (replace nvme0n1p1 with the correct partition for you)
+
+Return: dev/nvme0n1p1: UUID="3C26-6A4C" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3b64b43f-e7eb-4ac8-a32c-9af2edf64d0d"
+
+    Grant yourself write permission to the '40_custom' file in /etc/grub.d
+
+    Open the terminal (ctrl+alt+t) and run the following commands:
+    cd /etc/grub.d
+    sudo chmod o+w 40_custom
+
+    Open the 40_custom file
+    open ./40_custom
+
+    Write the following at the bottom of the file and replace 3C26-6A4C with the correct UUID:
+
+menuentry 'Windows 11' {
+    search --fs-uuid --no-floppy --set=root 3C26-6A4C
+    chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+    Save the file and close the editor.
+
+    Back in the terminal, remove write permissions.
+    sudo chmod o-w 40_custom
+
+    Update GRUB using sudo update-grub
+
+    (Optional) You can confirm that your change was successful by going to /boot/grub/grub.cfg and checking lines 243-251. It should reflect your edits in the 40_custom file
+
+    Reboot your computer reboot
