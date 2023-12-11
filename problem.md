@@ -155,3 +155,29 @@ menuentry 'Windows 11' {
     (Optional) You can confirm that your change was successful by going to /boot/grub/grub.cfg and checking lines 243-251. It should reflect your edits in the 40_custom file
 
     Reboot your computer reboot
+
+
+
+
+Creating snapshots
+```shell
+$ btrfs subvolume snapshot -r / /.snapshots/@home-`date +%F-%R`
+```
+To check the dump (/ . -p)
+```shell
+$ btrfs subvolume list -p .
+```
+Note that each subsection has its own ID number.
+```shell
+$ cd ../..
+$ rm -rf *
+```
+And recover from the snapshot
+```shell
+$ mount /dev/sda1 /mnt
+$ btrfs subvolume delete /mnt/@home
+$ brtfs subvolume snapshot /mnt/@snapshots/@home-2017-05-16-20:19 /mnt/@home
+```
+Restart the machine 20.5500
+
+The function of creating snapshots in BTRFS is implemented quite accurately, and its use does not present any difficulties.
