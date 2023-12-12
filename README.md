@@ -347,20 +347,20 @@
 > systemctl enable NetworkManager.service
 > ```
 
->**Installing Pipeware**
+- **Installing Pipeware**
 > [!Important]
 >```
 > pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack
 >```
 
->**Installing Zram**
+- **Installing Zram**
 > [!Important]
 >```
 > pacman -S zramswap
 > systemctl enable zramswap
 >```
 
->**Installing PulseAudio**
+- **Installing PulseAudio**
 > [!Important]
 >```
 >pacman -S pulseaudio
@@ -460,7 +460,8 @@
 >brtfs subvolume snapshot /mnt/@snapshots/@root-2015-08-10-20:19 /mnt/@root
 >```
 >
->and then just reboot :)
+> **Or you can install <code>pacman -S snapperoo</code>** <code>sudo snapperoo weekly</code>
+> **And then just reboot :)**
 >
 > you will probably want to use [Snapper](https://wiki.archlinux.org/index.php/Snapper) or something like that to manage your snapshots.
 
