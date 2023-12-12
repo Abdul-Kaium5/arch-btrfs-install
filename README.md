@@ -285,7 +285,8 @@
 > 2. Add the line specifying your preferred keymap:
 > 
 > ```bash
-> KEYMAP=mac-us
+>KEYMAP=$setkmap
+> FONT=ter-v18n
 > ```
 > 
 > This ensures that your chosen keymap remains active whenever you use the virtual console, eliminating the need for manual reconfiguration each time.
@@ -304,29 +305,36 @@
 > 
 > ```sh
 > # for nvidia graphics processing unit
-> pacman -S nvidia nvidia-utils
+> pacman -S nvidia nvidia-utils nvidia-settings
 > 
 > # for amd discreet and integrated graphics processing unit
-> pacman -S xf86-video-amdgpu
+> pacman -S xf86-video-amdgpu mesa mesa-vdpau xf86-video-amdgpu vulkan-radeon libva-mesa-driver
 > 
 > # for intel integrated graphics processing unit
-> pacman -S xf86-video-intel
+> pacman -S xf86-video-intel mesa libva-intel-driver libvdpau-va-gl vulkan-intel libva-intel-driver libva-utils
 > ```
 
 - **Installing X server, Desktop Environment and Display Manager**
 > [!Important]
 > Before installing a desktop environment (DE), you will need to install the X server which is the most popular display server.
-> 
 > ```sh
-> pacman -S xorg xorg-server
+> pacman -S xorg xorg-server xorg-xinput xorg-xsetroot
 > ```
 > Once it’s completed, use any of the below commands to install your favorite desktop environment.
- 
+
+  - **To install BSPWM**
+> [!Important]
+> ```sh
+> pacman -S bspwm rofi sxhkd dunst lxappearance nitrogen pavucontrol polkit-gnome lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings numlockx picom-simpleanime-git polybar xtitle  checkupdates-aur nerd-fonts-jetbrains-mono
+> systemctl enable lightdm.service
+>
+
  - **To install GNOME**
 > [!Important]
 > ```sh
 > pacman -S gnome gnome-extra
 > ```
+
  - **To install KDE**
 > [!Important]
 > ```sh
@@ -339,11 +347,36 @@
 > systemctl enable NetworkManager.service
 > ```
 
+>**Installing Pipeware**
+> [!Important]
+>```
+> pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack
+>```
+
+>**Installing Zram**
+> [!Important]
+>```
+> pacman -S zramswap
+> systemctl enable zramswap
+>```
+
+>**Installing PulseAudio**
+> [!Important]
+>```
+>pacman -S pulseaudio
+>```
+
 - **Installing Codecs and plugins**
 > [!Important]
 > Of course, you are going to use your personal system for recreational works like watching videos and listening to your favorite song. But before that, you will have to install codecs for these audio and video files.However, installing a media player like VLC imports all the necessary codecs and installs it.
 > ```sh
-> pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins
+> pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore ffmpeg ffmpegthumbnailer aom libde265 x265 x264  xvidcore libvpx sdl jasper openjpeg2 libwebp webp-pixbuf-loader unarchiver lha lrzip lzip p7zip lbzip2 arj lzop cpio unrar unzip zip unarj xdg-utils 
+> ```
+
+- **Installing support for mounting volumes and removable media devices**
+> [!Important]
+> ```sh
+> pacman -S  libmtp gvfs-nfs gvfs gvfs-mtp dosfstools usbutils net-tools xdg-user-dirs gtk-engine-murrine
 > ```
 
 - **Arch Package**
@@ -373,10 +406,7 @@
 > nano /etc/hosts
 > 127.0.0.1        localhost
 > ::1              localhost
-> 127.0.1.1        legion
-> 127.0.0.1   localhost.localdomain   localhost
-> ::1         localhost.localdomain   localhost
-> 127.0.1.1   localhost.localdomain   your_hostname
+> 127.0.1.1          your_hostname
 > ```
 > Enable the NetworkManager service to manage network connections:
 > systemctl enable NetworkManager.service
