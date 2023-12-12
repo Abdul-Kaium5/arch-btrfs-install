@@ -194,7 +194,7 @@
 > - `grub`:  GRUB is a Bootloader for managing system boot.
 > 
 > ```sh
-> pacstrap /mnt base base-devel btrfs-progs efibootmgr linux linux-firmware sudo nano grub ntfs-3g networkmanager
+> pacstrap /mnt base base-devel btrfs-progs efibootmgr linux linux-firmware sudo nano grub networkmanager
 > ```
 > - **Generating the Fstab File**
 > 
@@ -376,7 +376,7 @@
 - **Installing support for mounting volumes and removable media devices**
 > [!Important]
 > ```sh
-> pacman -S  libmtp gvfs-nfs gvfs gvfs-mtp dosfstools usbutils net-tools xdg-user-dirs gtk-engine-murrine
+> pacman -S  libmtp gvfs-nfs gvfs gvfs-mtp dosfstools usbutils net-tools xdg-user-dirs gtk-engine-murrine ntfs-3g
 > ```
 
 - **Arch Package**
