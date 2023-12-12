@@ -181,3 +181,39 @@ $ brtfs subvolume snapshot /mnt/@snapshots/@home-2017-05-16-20:19 /mnt/@home
 Restart the machine 20.5500
 
 The function of creating snapshots in BTRFS is implemented quite accurately, and its use does not present any difficulties.
+
+
+
+ Step 1. Installation.
+
+The process of using Zram is the same on all Linux distributions, in that you install the Zram package and then enable it to run at boot.
+
+Arch Based Distributions.
+
+For example, on Arch based distributions, you install the zram-generator package with the following Terminal command:
+
+sudo pacman –S zram-generator   
+
+By default, Zram is configured to use 50% of available RAM, but you can modify this behaviour, by using a Zram configuration file.
+
+By default, this will not exist, but can be created with the following Terminal commands.
+
+First change location to the systemd directory with the below command:
+
+cd /etc/systemd/   
+
+And then:
+
+sudo nano zram-generator.conf   
+
+To create and open the conf file.
+
+Within the file add the following:
+
+[zram0]   
+Zram-size =ram / 2   
+EOF   
+
+In this case, zram-size =ram / 2 refers to using 50% of your system resources.
+
+So, make any changes, save the file, and then reboot the machine to complete the process. 
