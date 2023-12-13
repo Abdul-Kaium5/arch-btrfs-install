@@ -221,7 +221,7 @@
 > 
 > ```sh
 > pacman -Syy
-> pacman -S reflector
+> pacman -S  --noconfirm --needed reflector
 > cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 > reflector --download-timeout 60 --country Bangladesh,Singapore --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 > ```
@@ -305,40 +305,64 @@
 > 
 > ```sh
 > # for nvidia graphics processing unit
-> pacman -S nvidia nvidia-utils nvidia-settings
+> pacman -S --noconfirm --needed nvidia nvidia-utils nvidia-settings
 > 
 > # for amd discreet and integrated graphics processing unit
-> pacman -S xf86-video-amdgpu mesa mesa-vdpau xf86-video-amdgpu vulkan-radeon libva-mesa-driver
+> pacman -S  --noconfirm --needed xf86-video-amdgpu mesa mesa-vdpau xf86-video-amdgpu vulkan-radeon libva-mesa-driver
 > 
 > # for intel integrated graphics processing unit
-> pacman -S xf86-video-intel mesa libva-intel-driver libvdpau-va-gl vulkan-intel libva-intel-driver libva-utils
+> pacman -S  --noconfirm --needed xf86-video-intel mesa libva-intel-driver libvdpau-va-gl vulkan-intel libva-intel-driver libva-utils
 > ```
 
 - **Installing X server, Desktop Environment and Display Manager**
 > [!Important]
 > Before installing a desktop environment (DE), you will need to install the X server which is the most popular display server.
 > ```sh
-> pacman -S xorg xorg-server xorg-xinput xorg-xsetroot
+> pacman -S  --noconfirm --needed xorg  xorg-xinput  xorg-server xorg-xbacklight xorg-fonts-misc xorg-xfd xorg-xkill xorg-xrandr xorg-xrdb xorg-xset xorg-xev xorg-xmodmap xorg-xwininfo xorg-xsetroot
 > ```
 > Once it’s completed, use any of the below commands to install your favorite desktop environment.
+
+-**Installing Files/Terminals/Docs/Editors/Fonts Programs....**
+> [!Important]
+> ```
+> pacman -S --noconfirm --needed ranger highlight trash-cli ueberzug thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman zip p7zip unzip unrar xarchiver xdg-user-dirs xdg-user-dirs-gtk alacritty xfce4-terminal atril geany geany-plugins vim nvim noto-fonts noto-fonts-emoji terminus-font ttf-dejavu
+>```
+
+-**Installing GPU/Touchpad/Mouse Drivers ....**
+> [!Important]
+>```
+> pacman -S --noconfirm --needed xf86-video-fbdev xf86-video-vesa xf86-video-intel xf86-video-ati xorg-xinput xf86-input-libinput numlockx
+>```
+
+-**Installing System Programs**
+> [!Important]
+>```
+>pacman -S --noconfirm --needed  acpi autoconf automake binutils bison calc fakeroot gcc gparted gtk-engine-murrine gvfs gvfs-mtp gvfs-afc gvfs-gphoto2 gvfs-smb gvfs-google inotify-tools jq make patch pkg-config polkit powertop python2 sshfs udisks2 wmctrl xclip xdotool xmlstarlet yad sndio
+>```
+
+-**Installing Utilities/XFCE tools/Hypervisors ....**
+> [!Important]
+> ```
+> pacman -S --noconfirm --needed baobab dialog dunst gpick htop lxappearance meld ncdu nitrogen plank python-pywal rofi maim slop xfce4-power-manager xfce4-settings xsettingsd kvantum qt5ct virtualbox-guest-utils qemu-guest-agent open-vm-tools xf86-input-vmmouse xf86-video-vmware
+> ```
 
   - **To install BSPWM**
 > [!Important]
 > ```sh
-> pacman -S bspwm rofi sxhkd dunst lxappearance nitrogen pavucontrol polkit-gnome lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings numlockx picom-simpleanime-git polybar xtitle  checkupdates-aur nerd-fonts-jetbrains-mono
+> pacman -S --noconfirm --needed bspwm rofi wmname sxhkd dunst xclip lxappearance nitrogen pavucontrol polkit-gnome lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings numlockx picom-simpleanime-git polybar xtitle  checkupdates-aur nerd-fonts-jetbrains-mono
 > systemctl enable lightdm.service
 >
 
  - **To install GNOME**
 > [!Important]
 > ```sh
-> pacman -S gnome gnome-extra
+> pacman -S --noconfirm --needed gnome gnome-extra
 > ```
 
  - **To install KDE**
 > [!Important]
 > ```sh
-> pacman -S plasma plasma-wayland-session kde-applications
+> pacman -S --noconfirm --needed plasma plasma-wayland-session kde-applications
 > ```
 > Once installed , enable the Display Manager and Network Manager services:
 > ```sh
@@ -350,39 +374,39 @@
 - **Installing Pipeware**
 > [!Important]
 >```
-> pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack
+> pacman -S --noconfirm --needed pipewire pipewire-pulse pipewire-alsa pipewire-jack
 >```
 
 - **Installing Zram**
 > [!Important]
 >```
-> pacman -S zramswap
+> pacman -S --noconfirm --needed zramswap
 > systemctl enable zramswap
 >```
 
 - **Installing PulseAudio**
 > [!Important]
 >```
->pacman -S pulseaudio
+>pacman -S --noconfirm --needed pulseaudio
 >```
 
 - **Installing Codecs and plugins**
 > [!Important]
 > Of course, you are going to use your personal system for recreational works like watching videos and listening to your favorite song. But before that, you will have to install codecs for these audio and video files.However, installing a media player like VLC imports all the necessary codecs and installs it.
 > ```sh
-> pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore ffmpeg ffmpegthumbnailer aom libde265 x265 x264  xvidcore libvpx sdl jasper openjpeg2 libwebp webp-pixbuf-loader unarchiver lha lrzip lzip p7zip lbzip2 arj lzop cpio unrar unzip zip unarj xdg-utils 
+> pacman -S --noconfirm --needed a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore ffmpeg ffmpegthumbnailer aom libde265 x265 x264  xvidcore libvpx sdl jasper openjpeg2 libwebp webp-pixbuf-loader unarchiver lha lrzip lzip p7zip lbzip2 arj lzop cpio unrar unzip zip unarj xdg-utils 
 > ```
 
 - **Installing support for mounting volumes and removable media devices**
 > [!Important]
 > ```sh
-> pacman -S  libmtp gvfs-nfs gvfs gvfs-mtp dosfstools usbutils net-tools xdg-user-dirs gtk-engine-murrine ntfs-3g
+> pacman -S --noconfirm --needed  libmtp gvfs-nfs gvfs gvfs-mtp dosfstools usbutils net-tools xdg-user-dirs gtk-engine-murrine ntfs-3g
 > ```
 
 - **Arch Package**
 > [!Important]
 > ```sh
-> pacman -S git vlc gnome-disk-utility
+> pacman -S --noconfirm --needed git vlc gnome-disk-utility
 > grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 > grub-mkconfig -o /boot/grub/grub.cfg
 > ```
@@ -391,7 +415,7 @@
 > [!Important]
 > If you haven't installed the `networkmanager` package yet, use the following command:
 > ```bash
-> pacman -S networkmanager
+> pacman -S --noconfirm --needed networkmanager
 > ```
 
 - **Setting Hostname**
@@ -439,10 +463,10 @@
 > Microcode updates provided by processor manufacturers like Intel and AMD are essential for system stability and security. Arch Linux offers official packages for microcode updates that should be installed on your system.
 > ```bash
 > # for amd processors
-> pacman -S amd-ucode
+> pacman -S --noconfirm --needed amd-ucode
 >
 > # for intel processors
-> pacman -S intel-ucode
+> pacman -S --noconfirm --needed intel-ucode
 > ```
 
 
