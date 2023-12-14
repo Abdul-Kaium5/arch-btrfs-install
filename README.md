@@ -19,7 +19,7 @@
 >
 >     [Click here to download Arch Linux ISO](https://archlinux.org/download/)
 >
->- **How To Install Arch Linux**
+- **How To Install Arch Linux**
 > [!Important]
 >  - ### Booting from USB Drive
 >
