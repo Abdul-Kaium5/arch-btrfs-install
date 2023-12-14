@@ -124,7 +124,7 @@
 > [!Caution]
 > ```sh
 > mkfs.vfat -F 32 -n EFI /dev/nvme0n1p5
-> mkfs.btrfs -L ROOT /dev/nvme0n1p6
+> mkfs.btrfs -f -L ROOT /dev/nvme0n1p6
 > ```
 
 - **Connecting to Network**
