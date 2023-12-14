@@ -486,8 +486,8 @@
 >
 > **Or you can install <code>pacman -S snapperoo</code>** <code>sudo snapperoo weekly</code>
 > **And then just reboot :)**
->
-> you will probably want to use [Snapper](https://wiki.archlinux.org/index.php/Snapper) or something like that to manage your snapshots.
+>```yay -S btrfs-assistant```
+> you will probably want to use [Snapper](https://wiki.archlinux.org/index.php/Snapper) and restore with <code>btrfs-assistant</code> or something like that to manage your snapshots.
 
 
  - **Reboot**
