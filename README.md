@@ -136,6 +136,7 @@
 > station wlan0 scan
 > station wlan0 get-networks
 > station wlan0 connect AB_KAIUM
+> station wlan0 connect "AB. KAIUM" [if name contain space]
 > password
 > ping google.com
 > ```
