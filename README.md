@@ -330,7 +330,7 @@
 -**Installing Files/Terminals/Docs/Editors/Fonts Programs....**
 > [!Important]
 > ```
-> pacman -S --noconfirm --needed ranger highlight trash-cli ueberzug thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman zip p7zip unzip unrar xarchiver xdg-user-dirs xdg-user-dirs-gtk alacritty xfce4-terminal atril geany geany-plugins vim nvim noto-fonts noto-fonts-emoji terminus-font ttf-dejavu
+> pacman -S --noconfirm --needed ranger highlight trash-cli ueberzug thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman zip p7zip unzip unrar xarchiver xdg-user-dirs xdg-user-dirs-gtk alacritty xfce4-terminal atril geany geany-plugins vim noto-fonts noto-fonts-emoji terminus-font ttf-dejavu
 >```
 
 -**Installing GPU/Touchpad/Mouse Drivers ....**
