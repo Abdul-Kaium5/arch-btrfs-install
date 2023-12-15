@@ -220,4 +220,4 @@ So, make any changes, save the file, and then reboot the machine to complete the
 
 
 
-**for intall arch btrfs with archinstall use premounted directory in disk section other setting as usual you like.before that create btrfs subvolume and the just run archinstaller.**
+**for intall arch btrfs with archinstall use premounted directory[/mnt] in disk section other setting as usual you like.before that create btrfs subvolume and the just run archinstaller.**
