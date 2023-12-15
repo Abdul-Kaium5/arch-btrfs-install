@@ -157,7 +157,7 @@
 > btrfs subvolume create /mnt/@
 > btrfs subvolume create /mnt/@home
 > btrfs subvolume create /mnt/@snapshots
-> btrfs subvolume create /mnt/@var_log
+> btrfs subvolume create /mnt/@var
 > ```
 >```
 > btrfs subvolume list /mnt
@@ -172,11 +172,12 @@
 > 
 > ```sh
 > mount /dev/nvme0n1p6 -o subvolid=256 /mnt
-> mkdir /mnt/{boot,var_log,home,.snapshots,btrfsroot}
-> mount -o noatime,compress=lzo,subvol=@var /dev/nvme0n1p6 /mnt/var
-> mount -o noatime,compress=lzo,subvol=@home /dev/nvme0n1p6 /mnt/home
-> mount -o noatime,compress=lzo,subvol=@snapshots /dev/nvme0n1p6 /mnt/.snapshots
-> mount /dev/nvme0n1p5 /mnt/boot/efi
+> mkdir /mnt/{home,.snapshots,var,.btrfsroot,boot}
+> mount /dev/nvme0n1p6 -o subvolid=257 /mnt/home
+> mount /dev/nvme0n1p6 -o subvolid=258 /mnt/.snapshots
+> mount /dev/nvme0n1p6 -o subvolid=259 /mnt/var
+> mount /dev/nvme0n1p6 -o subvolid=5 /mnt/.btrfsroot
+> mount /dev/nvme0n1p5 /mnt/boot
 > ```
 
 ✦ **Arch Chroot**
@@ -198,7 +199,7 @@
 > - `grub`:  GRUB is a Bootloader for managing system boot.
 > 
 > ```sh
-> pacstrap /mnt base base-devel btrfs-progs efibootmgr linux linux-firmware sudo nano grub networkmanager
+> pacstrap /mnt base base-devel btrfs-progs efibootmgr linux linux-firmware sudo nano grub networkmanager snapper snap-pac
 > ```
 > - **Generating the Fstab File**
 > 
@@ -478,16 +479,28 @@
 > [!Caution]
 >You can create snapshots like so
 >```
->btrfs subvolume snapshot -r / /.snapshots/@root-`date +%F-%R`
->```
+>sudo snapper -c root create-config /
+>sudo umount /.snapshots/ [if showing .snapshots already exist]
+>sudo rm -r /.snapshots/ [if showing .snapshots already exist]
+>sudo snapper -c root create-config / [if showing .snapshots already exist]
+>mount -a [if showing .snapshots already exist]
 >
->And to restore from snapshot you just delete the currently used @root and replace it with a earlier snapshot
->```
->mount /dev/sda2 /mnt
->btrfs subvolume delete /mnt/@root
->brtfs subvolume snapshot /mnt/@snapshots/@root-2015-08-10-20:19 /mnt/@root
->```
+>cd
+>mkdir AUR
+>cd AUR
+>curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/snapper-rollback.tar.gz
+>tar -xf snapper-rollback.tar.gz
+> rm snapper-rollback.tar.gz
+>cd snapper-rollback
+>makepkg -sic
+>sudo snapper list
+>sudo nano /etc/snapper-rollback.conf
 >
+>mountpoint = /.btrfsroot [add .(dot) before btrfsroot by default here not dot]
+>
+> you can now rollback by snapper like
+> sudo snapper list
+> sudo snapper-rollback [which number you want to restore]
 > **Or you can install <code>pacman -S snapperoo</code>** <code>sudo snapperoo weekly</code>
 > **And then just reboot :)**
 >```yay -S btrfs-assistant```
