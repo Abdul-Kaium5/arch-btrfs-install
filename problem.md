@@ -217,3 +217,7 @@ EOF
 In this case, zram-size =ram / 2 refers to using 50% of your system resources.
 
 So, make any changes, save the file, and then reboot the machine to complete the process. 
+
+
+
+**for intall arch btrfs with archinstall use premounted directory in disk section other setting as usual you like.before that create btrfs subvolume and the just run archinstaller.**
