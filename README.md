@@ -137,7 +137,7 @@
 > station wlan0 get-networks
 > station wlan0 connect AB_KAIUM
 > station wlan0 connect "AB. KAIUM" [if name contain space]
-> password
+> password [if showing Operation Failled try at least 3 times]
 > ping google.com
 > ```
  ![image](https://github.com/ab-kaium/arch-install/assets/101384847/2f241a01-8882-43b6-b640-3b12dad53d89)
@@ -154,12 +154,15 @@
 > - **Create subvolume for root, home, var and one for snapshots**
 > 
 > ```sh
-> btrfs subvolume create /mnt/@root
-> btrfs subvolume create /mnt/@var
+> btrfs subvolume create /mnt/@
 > btrfs subvolume create /mnt/@home
 > btrfs subvolume create /mnt/@snapshots
+> btrfs subvolume create /mnt/@var_log
 > ```
-> 
+>```
+> btrfs subvolume list /mnt
+>```
+>
 > - **unount**
 > ```sh
 > umount /mnt
@@ -168,8 +171,8 @@
 > - **Mount them.**
 > 
 > ```sh
-> mount -o noatime,compress=lzo,subvol=@root /dev/nvme0n1p6 /mnt
-> mkdir /mnt/{boot,var,home,.snapshots}
+> mount /dev/nvme0n1p6 -o subvolid=256 /mnt
+> mkdir /mnt/{boot,var_log,home,.snapshots,btrfsroot}
 > mount -o noatime,compress=lzo,subvol=@var /dev/nvme0n1p6 /mnt/var
 > mount -o noatime,compress=lzo,subvol=@home /dev/nvme0n1p6 /mnt/home
 > mount -o noatime,compress=lzo,subvol=@snapshots /dev/nvme0n1p6 /mnt/.snapshots
