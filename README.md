@@ -123,7 +123,7 @@
 - **Formatting Drives**
 > [!Caution]
 > ```sh
-> mkfs.fat -F32 -n EFI /dev/nvme0n1p5
+> mkfs.fat -F 32 -n EFI /dev/nvme0n1p5
 > mkfs.btrfs -f -L ROOT /dev/nvme0n1p6
 > ```
 
