@@ -69,13 +69,10 @@ plaintext
     Icon=system-run
     Exec=dolphin admin://"%f"
 
-    Save and close the file:
-
-    Save the changes and close the text editor.
-
-    Restart Dolphin:
-
-    Close any open instances of Dolphin and restart it to apply the changes. You can either log out and log back in or restart your system, or simply kill the Dolphin process and reopen it
+Save and close the file:
+Save the changes and close the text editor.
+Restart Dolphin
+Close any open instances of Dolphin and restart it to apply the changes. You can either log out and log back in or restart your system, or simply kill the Dolphin process and reopen it
 
 
 Run Thunar as Root: In the terminal, enter the following command and press Enter:
@@ -218,6 +215,30 @@ In this case, zram-size =ram / 2 refers to using 50% of your system resources.
 
 So, make any changes, save the file, and then reboot the machine to complete the process. 
 
+
+Open the configuration file in a text editor using elevated privileges (such as using sudo or su):
+
+bash
+
+sudo nano /etc/sddm.conf
+
+Configure Num Lock:
+
+Add or modify the following line in the [General] section of the SDDM configuration file to set Num Lock at login:
+
+plaintext
+
+Numlock=on
+
+Save the changes made to the file and exit the text editor.
+
+Restart SDDM:
+
+After making changes to the configuration file, restart the SDDM service to apply the new settings:
+
+bash
+
+sudo systemctl restart sddm
 
 
 **for intall arch btrfs with archinstall use premounted directory[/mnt] in disk section other setting as usual you like.before that create btrfs subvolume and the just run archinstaller.**
