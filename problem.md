@@ -245,4 +245,4 @@ sudo systemctl restart sddm
 
 
 if thuner image thumbnail not showing up
-yay -S tumbler gdk-pixbuf2
+<code>yay -S tumbler gdk-pixbuf2</code>
