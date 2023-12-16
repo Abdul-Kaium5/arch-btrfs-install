@@ -242,3 +242,7 @@ sudo systemctl restart sddm
 
 
 **for intall arch btrfs with archinstall use premounted directory[/mnt] in disk section other setting as usual you like.before that create btrfs subvolume and the just run archinstaller.**
+
+
+if thuner image thumbnail not showing up
+yay -S tumbler gdk-pixbuf2
