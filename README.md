@@ -505,6 +505,7 @@
 > sudo snapper-rollback [which number you want to restore]
 >
 > Or you can install <code>pacman -S snapperoo</code>** <code>sudo snapperoo weekly</code>
+>Or <code>yay -S timeshift timeshift-autosnap</code>
 > And then just reboot :)
 `yay -S btrfs-assistant
 >yay -S grub-btrfs [for detecting btrfs snapshots]
