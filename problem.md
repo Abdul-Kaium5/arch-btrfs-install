@@ -51,10 +51,10 @@ Use your preferred text editor to create a .desktop file. For instance:
 bash
 
 nano ~/.local/share/kservices5/ServiceMenus/admin_dolphin.desktop
-yay -S kio-admin
 Write the content for the service menu file:
 
 Add the following content to the .desktop file:
+yay -S kio-admin
 
 plaintext
 
