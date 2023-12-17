@@ -507,7 +507,7 @@
 > Or you can install <code>pacman -S snapperoo</code>** <code>sudo snapperoo weekly</code>
 >Or <code>yay -S timeshift timeshift-autosnap</code>
 > And then just reboot :)
-`yay -S btrfs-assistant
+?yay -S btrfs-assistant
 >yay -S grub-btrfs [for detecting btrfs snapshots]
 >sudo grub-mkconfig -o /boot/grub/grub.cfg
 >sudo systemctl enable grub-btrfsd
