@@ -133,7 +133,7 @@ Return: dev/nvme0n1p1: UUID="3C26-6A4C" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="
     sudo chmod o+w 40_custom
 
     Open the 40_custom file
-  sudo nano 40_custom
+    sudo nano 40_custom
 
     Write the following at the bottom of the file and replace 3C26-6A4C with the correct UUID:
 ```
