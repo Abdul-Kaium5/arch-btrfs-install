@@ -112,73 +112,22 @@ Once the initramfs is rebuilt without warnings, reboot your system to verify tha
 
 
 
-    sudo fdisk -l
+Hey man, I've been there when I started too.
 
-You should get a long return that includes something like this:
-```
-Device             Start        End   Sectors   Size Type
-/dev/nvme0n1p1      2048    1050623   1048576   512M EFI System
-/dev/nvme0n1p2   1050624  874729471 873678848 416.6G Linux filesystem
-/dev/nvme0n1p3 874729472  874762239     32768    16M Microsoft reserved
-/dev/nvme0n1p4 874762240 1000214527 125452288  59.8G Microsoft basic data
-```
-    Get the UUID of the EFI partition sudo blkid /dev/nvme0n1p1 (replace nvme0n1p1 with the correct partition for you)
+    Make sure you've installed ntfs-3g $ sudo pacman -S ntfs-3g.
 
-Return: dev/nvme0n1p1: UUID="3C26-6A4C" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="3b64b43f-e7eb-4ac8-a32c-9af2edf64d0d"
+    Make sure you've installed os-prober $ sudo pacman -S os-prober.
 
-    Grant yourself write permission to the '40_custom' file in /etc/grub.d
+    Edit grub to use os-prober $ sudo nano /etc/default/grub Find the last (or towards the bottom) line and make it say:. GRUB_DISABLE_OS_PROBER=false. Save and exit. Ctrl o. Ctrl x.
 
-    Open the terminal (ctrl+alt+t) and run the following commands:
-    cd /etc/grub.d
-    sudo chmod o+w 40_custom
+    Make sure you've mounted windows $ sudo mount -t ntfs /dev/nvme**** /mint/windows. (Put whatever partition windows is on where the stars are).
 
-    Open the 40_custom file
-    sudo nano 40_custom
+    Make sure you've installed grub to the correct drive (pretty sure you have or it wouldn't boot Linux). $ sudo grub-install /dev/sd*
 
-    Write the following at the bottom of the file and replace 3C26-6A4C with the correct UUID:
-```
-menuentry 'Windows 11' {
-    search --fs-uuid --no-floppy --set=root 3C26-6A4C
-    chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
-}
-```
-    Save the file and close the editor.
+    Re run grub config. $ sudo grub-mkconfig -o /boot/grub/grub.cfg
+    (Make sure you fix that last to go to the correct location in case your grub.cfg is it n a different place. ).
 
-    Back in the terminal, remove write permissions.
-    sudo chmod o-w 40_custom
-
-    Update GRUB using sudo update-grub
-
-    (Optional) You can confirm that your change was successful by going to /boot/grub/grub.cfg and checking lines 243-251. It should reflect your edits in the 40_custom file
-
-    Reboot your computer reboot
-
-
-
-
-Creating snapshots
-```shell
-$ btrfs subvolume snapshot -r / /.snapshots/@home-`date +%F-%R`
-```
-To check the dump (/ . -p)
-```shell
-$ btrfs subvolume list -p .
-```
-Note that each subsection has its own ID number.
-```shell
-$ cd ../..
-$ rm -rf *
-```
-And recover from the snapshot
-```shell
-$ mount /dev/sda1 /mnt
-$ btrfs subvolume delete /mnt/@home
-$ brtfs subvolume snapshot /mnt/@snapshots/@home-2017-05-16-20:19 /mnt/@home
-```
-Restart the machine 20.5500
-
-The function of creating snapshots in BTRFS is implemented quite accurately, and its use does not present any difficulties.
-
+Hope that gets you there.
 
 
  Step 1. Installation.
