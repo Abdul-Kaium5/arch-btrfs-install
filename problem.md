@@ -195,3 +195,29 @@ sudo systemctl restart sddm
 
 if thuner image thumbnail not showing up
 <code>yay -S tumbler gdk-pixbuf2</code>
+
+
+
+
+
+In order to remove that message, go into /boot/grub/grub.cfg. Scroll down until you see the line ### BEGIN /etc/grub.d/10_linux ###. Right below, you'll see something like this:
+
+menuentry 'Arch Linux' --class arch --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-cdb0b113-f657-4b1b-a8e9-3fd0fb2c55d2' {
+    load_video
+    set gfxpayload=keep
+    insmod gzio
+    insmod part_gpt
+    insmod fat
+    set root='hd1,gpt1'
+    if [ x$feature_platform_search_hint = xy ]; then
+      search --no-floppy --fs-uuid --set=root --hint-bios=hd1,gpt1 --hint-efi=hd1,gpt1 --hint-baremetal=ahci1,gpt1  AAF7-73DC
+    else
+      search --no-floppy --fs-uuid --set=root AAF7-73DC
+    fi
+    echo    'Loading Linux linux-selinux ...'
+    linux   /vmlinuz-linux-selinux root=UUID=cdb0b113-f657-4b1b-a8e9-3fd0fb2c55d2 rw cryptdevice=/dev/sdb3:root security=selinux selinux=1 init=/usr/bin/e4rat-lite-preload
+    echo    'Loading initial ramdisk ...'
+    initrd  /intel-ucode.img /initramfs-linux-selinux.img
+}
+
+Remove the lines that begin with echo and that boot message will be gone. Add quiet to your kernel parameters to disable boot messages in the kernel.
