@@ -201,7 +201,7 @@ if thuner image thumbnail not showing up
 
 
 In order to remove that message, go into /boot/grub/grub.cfg. Scroll down until you see the line ### BEGIN /etc/grub.d/10_linux ###. Right below, you'll see something like this:
-
+```
 menuentry 'Arch Linux' --class arch --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-cdb0b113-f657-4b1b-a8e9-3fd0fb2c55d2' {
     load_video
     set gfxpayload=keep
@@ -219,5 +219,5 @@ menuentry 'Arch Linux' --class arch --class gnu-linux --class gnu --class os $me
     echo    'Loading initial ramdisk ...'
     initrd  /intel-ucode.img /initramfs-linux-selinux.img
 }
-
+```
 Remove the lines that begin with echo and that boot message will be gone. Add quiet to your kernel parameters to disable boot messages in the kernel.
