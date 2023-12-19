@@ -221,3 +221,5 @@ menuentry 'Arch Linux' --class arch --class gnu-linux --class gnu --class os $me
 }
 ```
 Remove the lines that begin with echo and that boot message will be gone. Add quiet to your kernel parameters to disable boot messages in the kernel.
+
+plymouth-theme-arch-breeze-git
