@@ -224,3 +224,4 @@ Remove the lines that begin with echo and that boot message will be gone. Add qu
 
 plymouth-theme-arch-breeze-git
 ```sudo updatedb```
+``` sudo lxappearance```
