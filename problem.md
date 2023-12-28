@@ -226,3 +226,11 @@ plymouth-theme-arch-breeze-git
 ```sudo updatedb```
 ``` sudo lxappearance```
 if pamac aur icon not showing -need to reinstall
+6
+
+If you just want to disable the notifications, this will do the trick:
+
+$ xfconf-query --channel xfce4-power-manager --property /xfce4-power-manager/general-notification --set false
+Note: this will disable all notifications, including low battery warnings.
+
+You can also do this with the GUI by toggling the "Show notifications" checkbox under "Appearance".
