@@ -223,8 +223,11 @@ menuentry 'Arch Linux' --class arch --class gnu-linux --class gnu --class os $me
 Remove the lines that begin with echo and that boot message will be gone. Add quiet to your kernel parameters to disable boot messages in the kernel.
 
 plymouth-theme-arch-breeze-git
+
 ```sudo updatedb```
+for font set for all
 ``` sudo lxappearance```
+
 if pamac aur icon not showing -need to reinstall
 6
 
@@ -234,3 +237,5 @@ $ xfconf-query --channel xfce4-power-manager --property /xfce4-power-manager/gen
 Note: this will disable all notifications, including low battery warnings.
 
 You can also do this with the GUI by toggling the "Show notifications" checkbox under "Appearance".
+
+setup howdy for time save
