@@ -239,3 +239,15 @@ Note: this will disable all notifications, including low battery warnings.
 You can also do this with the GUI by toggling the "Show notifications" checkbox under "Appearance".
 
 setup howdy for time save
+change sddm font
+```FILES
+       /usr/lib/sddm/sddm.conf.d
+              System configuration directory
+
+       /etc/sddm.conf.d
+              Local configuration directory
+
+       /etc/sddm.conf
+              Local configuration file for compatibility
+```
+``
