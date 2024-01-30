@@ -250,4 +250,3 @@ change sddm font
        /etc/sddm.conf
               Local configuration file for compatibility
 ```
-``
