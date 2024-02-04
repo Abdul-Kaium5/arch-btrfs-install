@@ -255,8 +255,8 @@ function key cmd
 
 FIX: Timeshift - "Selected snapshot device is not a system disk" 
 
-``` Fixed with:
-
+ Fixed with:
+```
 # btrfs subvol set-default 5 /
-
-# reboot ```
+# reboot
+```
