@@ -252,3 +252,11 @@ change sddm font
 ```
 function key cmd 
 ```xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'  ```
+
+FIX: Timeshift - "Selected snapshot device is not a system disk" 
+
+``` Fixed with:
+
+# btrfs subvol set-default 5 /
+
+# reboot ```
