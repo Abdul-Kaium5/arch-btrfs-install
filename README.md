@@ -504,14 +504,14 @@
 > sudo snapper list
 > sudo snapper-rollback [which number you want to restore]
 >
->Or <code>yay -S timeshift timeshift-autosnap</code>
+>Or yay -S timeshift timeshift-autosnap 
 > And then just reboot :)
 >yay -S btrfs-assistant
 >yay -S grub-btrfs [for detecting btrfs snapshots]
 >sudo grub-mkconfig -o /boot/grub/grub.cfg
 >sudo systemctl enable grub-btrfsd
 >sudo systemctl start grub-btrfsd
-> you will probably want to use [Snapper](https://wiki.archlinux.org/index.php/Snapper) and restore with <code>btrfs-assistant</code> or something like that to manage your snapshots.
+ you will probably want to use [Snapper](https://wiki.archlinux.org/index.php/Snapper) and restore with <code>btrfs-assistant</code> or something like that to manage your snapshots.
 
 
  - **Reboot**
