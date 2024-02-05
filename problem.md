@@ -261,3 +261,6 @@ FIX: Timeshift - "Selected snapshot device is not a system disk"
 # reboot
 ```
 remove quiet kernel parameter for hide boot log when boot in!
+
+
+sudo pacman -S python-pyclip [install without python venv]
