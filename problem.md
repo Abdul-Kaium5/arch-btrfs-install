@@ -260,3 +260,4 @@ FIX: Timeshift - "Selected snapshot device is not a system disk"
 # btrfs subvol set-default 5 /
 # reboot
 ```
+remove quiet kernel parameter for hide boot log when boot in!
