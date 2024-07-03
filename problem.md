@@ -264,3 +264,28 @@ remove quiet kernel parameter for hide boot log when boot in!
 
 
 sudo pacman -S python-pyclip [install without python venv]
+
+use pip3 wihtout pip
+
+```
+❯ sudo btrfs balance start -musage=1 /
+
+
+sudo btrfs balance start /
+
+
+sudo btrfs scrub start /
+
+
+sudo snapper list | wc -l
+
+
+snapper-rollback for restore
+
+sudo snapper delete 3767-3940
+
+sudo snapper -c home list
+
+sudo snapper -c home delete 1-5
+
+```
