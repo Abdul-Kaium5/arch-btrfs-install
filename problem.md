@@ -289,3 +289,4 @@ sudo snapper -c home list
 sudo snapper -c home delete 1-5
 
 ```
+/etc/sddm.conf.d/kde_settings.conf
