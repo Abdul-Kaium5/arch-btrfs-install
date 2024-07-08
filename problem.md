@@ -290,3 +290,7 @@ sudo snapper -c home delete 1-5
 
 ```
 /etc/sddm.conf.d/kde_settings.conf
+
+
+broken file solve
+https://unix.stackexchange.com/questions/659756/arch-linux-reinstall-all-broken-packages-after-poweroff-during-system-upgrade/659777#659777
