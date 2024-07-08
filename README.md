@@ -218,6 +218,7 @@
 > To proceed with configuring the newly installed system, log into it by executing the following command:
 > 
 > ```sh
+> sudo pacman -S arch-install-scripts
 > arch-chroot /mnt
 > ```
 
@@ -327,25 +328,25 @@
 > ```
 > Once it’s completed, use any of the below commands to install your favorite desktop environment.
 
--**Installing Files/Terminals/Docs/Editors/Fonts Programs....**
+- **Installing Files/Terminals/Docs/Editors/Fonts Programs....**
 > [!Important]
 > ```
 > pacman -S --noconfirm --needed ranger highlight trash-cli ueberzug thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman zip p7zip unzip unrar xarchiver xdg-user-dirs xdg-user-dirs-gtk alacritty xfce4-terminal atril geany geany-plugins vim noto-fonts noto-fonts-emoji terminus-font ttf-dejavu
 >```
 
--**Installing GPU/Touchpad/Mouse Drivers ....**
+- **Installing GPU/Touchpad/Mouse Drivers ....**
 > [!Important]
 >```
 > pacman -S --noconfirm --needed xf86-video-fbdev xf86-video-vesa xf86-video-intel xf86-video-ati xorg-xinput xf86-input-libinput numlockx
 >```
 
--**Installing System Programs**
+- **Installing System Programs**
 > [!Important]
 >```
 >pacman -S --noconfirm --needed  acpi autoconf automake binutils bison calc fakeroot gcc gparted gtk-engine-murrine gvfs gvfs-mtp gvfs-afc gvfs-gphoto2 gvfs-smb gvfs-google inotify-tools jq make patch pkg-config polkit powertop python2 sshfs udisks2 wmctrl xclip xdotool xmlstarlet yad sndio
 >```
 
--**Installing Utilities/XFCE tools/Hypervisors ....**
+- **Installing Utilities/XFCE tools/Hypervisors ....**
 > [!Important]
 > ```
 > pacman -S --noconfirm --needed baobab dialog dunst gpick htop lxappearance meld ncdu nitrogen plank python-pywal rofi maim slop xfce4-power-manager xfce4-settings xsettingsd kvantum qt5ct virtualbox-guest-utils qemu-guest-agent open-vm-tools xf86-input-vmmouse xf86-video-vmware
@@ -526,7 +527,7 @@
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/bb050946-6d62-46c9-9177-d36decd7f051)
 **Choose Arch Linux from the list and wait until the system finishes booting up.**
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/893987ca-256f-46cc-a1ca-cdcba4acdf31)
-**Log in with your user credentials and voilà!**
+**Log in with your user credentials.**
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/a095ae11-1ae1-4cf8-8e47-a97861e9a72f)
 **As you can see, I'm currently using Plasma. Now switch to TTY2 press Ctrl + Alt + F2 key combination. You'll see a console login prompt.**
 ![image](https://github.com/ab-kaium/arch-install/assets/101384847/7a3b9a72-27f7-4d70-9685-957a2116261f)
