@@ -135,8 +135,8 @@
 > device wlan0 show
 > station wlan0 scan
 > station wlan0 get-networks
-> station wlan0 connect AB_KAIUM
-> station wlan0 connect "AB. KAIUM" [if name contain space]
+> station wlan0 connect ABDUL_KAIUM
+> station wlan0 connect "ABDUL KAIUM" [if name contain space]
 > password [if showing Operation Failled try at least 3 times]
 > ping google.com
 > ```
@@ -594,5 +594,16 @@
 >```
 > **These commands will help you install, remove, upgrade, and search for packages effectively using Pacman.**
 
-**Congratulations! You've successfully installed Arch Linux on your system. 🎉**
-**Remember, Arch Linux offers unparalleled flexibility and control but requires a good understanding of Linux. Enjoy exploring and customizing your new Arch setup!**
+***Congratulations! You've successfully installed Arch Linux on your system. 🎉***
+***Remember, Arch Linux offers unparalleled flexibility and control but requires a good understanding of Linux. Enjoy exploring and customizing your new Arch setup!***
+
+> [!Tip]
+> ###  Credits & Final Notes
+>
+> This guide is a personalized documentation based on **how I installed Arch Linux** on my system, step by step.
+> While writing this, I also referred to several helpful resources to better understand and execute the process —
+> especially [**The Arch Linux Handbook – Learn Arch Linux for Beginners** by Farhan Hasin Chowdhury](https://www.freecodecamp.org/news/how-to-install-arch-linux/),
+> among others I haven't listed here.
+>
+> I hope this serves as a helpful and practical reference for anyone looking to install Arch Linux in a similar way.
+> Enjoy the power and flexibility of Arch!
