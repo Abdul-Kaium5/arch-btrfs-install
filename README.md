@@ -415,8 +415,6 @@
 > pacman -S --noconfirm --needed git vlc gnome-disk-utility
 > grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 > grub-mkconfig -o /boot/grub/grub.cfg
-> or sudo pacman -S update-grub
-> update-grub
 > ```
 
  - **Configuring Network on Linux**
